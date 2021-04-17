@@ -1,9 +1,6 @@
-
-import fieldmath
 import numpy as np
-import srlce  
-from srlce import A,prim,k,n,w,t
-import random
+from srlce import k,n,w,t
+
 
 def error(n,w,t):
     e=np.arange(1,n)
