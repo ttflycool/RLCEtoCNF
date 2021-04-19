@@ -21,7 +21,8 @@
 
   5.In H_G, the check matrix is obtained by generating the matrix.
 
-  6.Tocnf output the cnf file
+  6.Tocnf output the cnf file.
+    Input the rows of the matrix as Boolean equations, and block the Boolean equations.
 
 #RUN 
 1. In srlce input n,k,t,m
