@@ -12,10 +12,10 @@
   3.The public key of the RLCE scheme is calculated and generated in srlce.
     You can choose to input parameters n, k, t, m
     According to these parameters will generate：
-    Generating Matrix of Generalized RS Code-Gs(g,n）
-    Sparse matrix A-getMatrixA(k,w)
-    Non-singular matrix-Snonsingula(n,k)
-    Non-standard form of public key-Gpub(g,n,k,w)
+    Generating Matrix of Generalized RS Code-Gs(g,n).
+    Sparse matrix A-getMatrixA(k,w.)
+    Non-singular matrix-Snonsingula(n,k).
+    Non-standard form of public key-Gpub(g,n,k,w).
   
   4.A random error vector is generated in randomerror
 
