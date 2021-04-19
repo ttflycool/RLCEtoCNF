@@ -2,7 +2,6 @@ import fieldmath
 import numpy as np
 import srlce  
 from srlce import A,prim,k,n,w,t
-import random
 from randomerror import rerror
 
 
