@@ -4,11 +4,11 @@ import numpy.matlib
 import scipy.linalg
 
 
-m=8
-n=255  # length of total message+ecc
-k=179
-w=100
-t=10
+m=3
+n=7  # length of total message+ecc
+k=4
+w=2
+t=1
 nsym =n-k  # length of ecc
 
 
