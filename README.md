@@ -21,10 +21,12 @@
 
   5.In H_G, the check matrix is obtained by generating the matrix.
 
-  6.Tocnf output the cnf file.
+  6.Tocnf can create the cnf file.
     Input the rows of the matrix as Boolean equations, and block the Boolean equations.
+    
+  7.treetocnf can creat the cnf file about  error vector
 
 #RUN 
 1. In srlce input n,k,t,m
-2. run  Tocnf and you will get a "out.cnf" file
+2. run  treetocnf and you will get a "out.cnf" file
 
