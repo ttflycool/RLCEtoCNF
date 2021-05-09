@@ -1,8 +1,7 @@
-from H_G import h ,b ,rc
 import numpy as np
-from srlce import A,prim,k,n,w,t,m
 import reedsolo as rs
-
+from H_G import b, h, rc
+from srlce import A, k, m, n, prim, t, w
 
 
 def output(temp):
@@ -119,7 +118,7 @@ def binA():#Ay.T=b1
             Ablock=a 
         else:
             Ablock=np.concatenate((Ablock,a),axis=0)
-
+    print("ABLOCK\n",Ablock)
     return  Ablock
 
 
@@ -133,14 +132,34 @@ def numblock():#hA矩阵转化为序号，代表第多少个未知数1=e1,2=e12,
                 HA[i,j]=j+1
     return HA
 
+def extocnf(yy):#x=e_11 or e_12...e_1m,y为空的新变量
+    x=1
+    for i in range (0,n+w):
+        list0=[]
 
+        for j in range (0,m):
+            list0.append(x)
+            x=x+1
+        list1=list(list0)
+        list1.append(yy)
+        list1[0]=-list1[0]
+        list1=[str(z) for z in list1]
+        list1=" ".join(list1)
+        output(list1)
+        list0.append(-yy)
+        list0=[str(z) for z in list0]
+        list0=" ".join(list0)
+        output(list0)
+        yy=yy+1
+    return yy  
+    
 
 def blockxortocnf():#生成cnf文件
     a=numblock()
     b=binb()
     b=b.flatten()#将b变为一维数组b[0]......以此来对应h[0]...
     numrow=a.shape[0]
-    y=np.arange(m*(n+w)+1,1000000,1)
+    y=np.arange(m*(2**(m+1))+1,10000,1)
     county=0
     for i in range(0,numrow):#一共有m*(n+w)行的式子
         temp=a[i]
@@ -181,11 +200,11 @@ def blockxortocnf():#生成cnf文件
             block3=np.append(block3,y3)
             toxor(block3,0)
             county=county+1
+    yy=y[county]+2#空的新变量
+    lastnum=extocnf(yy)
+    return lastnum
 
 
+y=blockxortocnf()
 
-
-blockxortocnf()
-
-print("ok!")
-
+print("75%")
