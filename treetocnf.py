@@ -16,11 +16,15 @@ def ttog2(num,m):#把一个数转化为m位二进制形式
     l=np.array(l)
     return l
     
-def mxyqtocnf(x,y,z,q):#m(zj1,zj2,q)=z1 or z2 or q
-    cause0=str(x) + " " + str(y) + " " + str(z) + " " + str(-q)
-    cause1=str(x) + " " + str(y) + " " + str(-z) + " " + str(q)
+def mxyqtocnf(x,y,z,q):#q=x*y or  y*z or z*x
+    cause0=str(x) + " " + str(-q) 
+    cause1=str(y) + " " + str(-q)
+    cause2=str(z) + " " + str(-q)
+    cause3=str(-x) + " " + str(-y) + " " + str(-z) + " " + str(q)
     output(cause0)
-    output(cause0)
+    output(cause1)
+    output(cause2)
+    output(cause3)
 
 
 
@@ -52,11 +56,13 @@ def xyztocnf(x,y,z):#末尾 x xor y xor z=1
             output(cause2)
             output(cause3)
 
-def xytoq(x,y,z):#提供的q   x or y =q
-    cause0 = str(x) + " " + str(-y) + " " + str(z)
-    cause1 = str(x) + " " + str(y) + " " + str(-z)
+def xytoq(x,y,z):#提供的q   x and y =q
+    cause0 =str(x) + " " + str(-z)
+    cause1 =str(y) + " " + str(-z)
+    cause2 = str(-x) + " " + str(-y) + " " + str(z)
     output(cause0)
     output(cause1)
+    output(cause2)
 
 def zqtocnf(z,q):#z=q
     cause0 = str(z) + " " + str(-q)
@@ -112,7 +118,7 @@ def treetocnf():
         lengthz=s+2#代表z1的位数
         if s==0:#底层
             z0=np.arange(y+1,y+1+(2**l))#z0此处为x的表
-            z1=np.arange(z0[-1]+1,z0[-1]+1+sumz)#sumz这里表示z有多少个
+            z1=np.arange(z0[-1]+1,z0[-1]+1+sumz)#sumz这里表示z1有多少个
             q=np.arange(z1[-1]+1,z1[-1]+1+sumq)#q的储存表
             i=0
             qi=0
@@ -157,6 +163,7 @@ def treetocnf():
             z0=z1
             z1=ttog2(t,lengthz)
             q=np.arange(q[-1]+1,q[-1]+1+sumq)
+            print("the sum x=",q[-1])
             #输出z1[0]
             txy(z0[0],z0[lengthz-1],z1[0])
             #z1[1]
@@ -168,9 +175,7 @@ def treetocnf():
             for i in range(2,lengthz-1):
                txyqxor(z0[i],z0[i+lengthz-1],q[i-1],z1[i])
                mxyqtocnf(z0[i-1],z0[i+lengthz-2],q[i-1],q[i-2])
-
-
-
+        
 
 treetocnf()
 print("100% \nok!")
