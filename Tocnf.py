@@ -22,7 +22,7 @@ def toxor(D, b):  # D是array，b是ture或flase即0，1
             output(cause0)
             output(cause1)
         else:
-            cause0 = str(D[0]) + " " + str(-D[1])
+            cause0 = str(D[0]) +" " + str(-D[1])
             cause1 = str(-D[0]) + " " + str(D[1])
             output(cause0)
             output(cause1)
@@ -136,7 +136,6 @@ def extocnf(yy):#x=e_11 or e_12...e_1m,y为空的新变量
     x=1
     for i in range (0,n+w):
         list0=[]
-
         for j in range (0,m):
             list0.append(x)
             x=x+1
@@ -159,7 +158,7 @@ def blockxortocnf():#生成cnf文件
     b=binb()
     b=b.flatten()#将b变为一维数组b[0]......以此来对应h[0]...
     numrow=a.shape[0]
-    y=np.arange(m*(2**(m+1))+1,10000,1)
+    y=np.arange(m*(n+w)+1,10000000,1)
     county=0
     for i in range(0,numrow):#一共有m*(n+w)行的式子
         temp=a[i]
@@ -200,11 +199,10 @@ def blockxortocnf():#生成cnf文件
             block3=np.append(block3,y3)
             toxor(block3,0)
             county=county+1
-    yy=y[county]+2#空的新变量
+    yy=y[county]+1#空的新变量
     lastnum=extocnf(yy)
-    return lastnum
+    return yy
 
 
 y=blockxortocnf()
-
 print("75%")
