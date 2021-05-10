@@ -1,6 +1,6 @@
 import numpy as np
 from srlce import k,n,w,t
-
+import random
 
 def error(n,w,t):
     e=np.arange(1,n)
