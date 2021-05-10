@@ -1,4 +1,4 @@
-# RLCEtoSAT
+# RLCEtoCNF
   1.fieldmath provides a method for mathematical calculations in the polynomial domain, 
     and we use it to perform Gaussian elimination on the matrix.
 
